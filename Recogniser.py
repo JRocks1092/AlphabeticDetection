@@ -49,7 +49,7 @@ while (cap.isOpened()):
         roi = gray[upper_left[1]:bottom_right[1], upper_left[0]:bottom_right[0]]
         im_pil = Image.fromarray(roi)
         image_bw = im_pil.convert('L')
-        image_bw_resized = image_bw.resize((28,28), Image.ANTIALIAS)
+        image_bw_resized = image_bw.resize((22,30), Image.ANTIALIAS)
         
         #processing image
         image_bw_resized_inverted = PIL.ImageOps.invert(image_bw_resized)
@@ -58,7 +58,7 @@ while (cap.isOpened()):
         image_bw_resized_inverted_scaled = np.clip(image_bw_resized_inverted-min_pixel, 0, 255)
         max_pixel = np.max(image_bw_resized_inverted)
         image_bw_resized_inverted_scaled = np.asarray(image_bw_resized_inverted_scaled)/max_pixel
-        test_sample = np.array(image_bw_resized_inverted_scaled).reshape(1,784)
+        test_sample = np.array(image_bw_resized_inverted_scaled).reshape(1,660)
         res = clf.predict(test_sample)
         print(res)
         
