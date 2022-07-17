@@ -1,1 +1,1 @@
-# AlphabeticRegression
+# AlphabeticDetection
